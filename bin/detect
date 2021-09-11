@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-# bin/detect <build-dir>
 
 error() {
   local c="2,999 s/^/ !     /"
@@ -20,7 +18,13 @@ error() {
 if [ -f "$1/package.json" ]; then
   echo 'Node.js'
   exit 0
-fi
+
+
+figit add package.json
+git commit -m 'track package.json'
+#!/usr/bin/env bash
+# bin/detect <build-dir>
+
 
 if [[ -f "$1/.slugignore" ]] && grep -Fxq "package.json" "$1/.slugignore"; then
   error << EOF
